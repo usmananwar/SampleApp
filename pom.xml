@@ -65,11 +65,11 @@
 	</build>
 
 	<repositories>
-		<repository>
+		<!-- <repository>
 			<id>spring-milestones</id>
 			<name>Spring Milestones</name>
 			<url>https://repo.spring.io/milestone</url>
-		</repository>
+		</repository> -->
 		<repository>
 			<id>spring-snapshots</id>
 			<name>Spring Snapshots</name>
@@ -80,11 +80,11 @@
 		</repository>
 	</repositories>
 	<pluginRepositories>
-		<pluginRepository>
+	<!-- 	<pluginRepository>
 			<id>spring-milestones</id>
 			<name>Spring Milestones</name>
 			<url>https://repo.spring.io/milestone</url>
-		</pluginRepository>
+		</pluginRepository> -->
 		<pluginRepository>
 			<id>spring-snapshots</id>
 			<name>Spring Snapshots</name>
