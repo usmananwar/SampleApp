@@ -12,7 +12,7 @@ import software.amazon.awssdk.services.cognitoidentity.model.GetOpenIdTokenRespo
 public class CognitoService {
 
 	String USER_POOL_ID = "ap-northeast-2_a8emYYZzs";
-	String CLIENT_ID = "3r8n6e2fsm686umcuhk1oi7jj5";
+	String CLIENT_ID = "ap-northeast-2:3r8n6e2fsm686umcuhk1oi7jj5";
 	 Region REGION = Region.AP_NORTHEAST_2;
 
 	public  void authenticate(String username, String password) {
