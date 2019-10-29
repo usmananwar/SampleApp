@@ -8,13 +8,14 @@ import software.amazon.awssdk.services.cognitoidentity.CognitoIdentityAsyncClien
 import software.amazon.awssdk.services.cognitoidentity.model.GetOpenIdTokenRequest;
 import software.amazon.awssdk.services.cognitoidentity.model.GetOpenIdTokenResponse;
 
+//@Service
 public class CognitoService {
 
-	static String USER_POOL_ID = "ap-northeast-2_a8emYYZzs";
-	static String CLIENT_ID = "3r8n6e2fsm686umcuhk1oi7jj5";
-	static Region REGION = Region.AP_NORTHEAST_2;
+	String USER_POOL_ID = "ap-northeast-2_a8emYYZzs";
+	String CLIENT_ID = "3r8n6e2fsm686umcuhk1oi7jj5";
+	 Region REGION = Region.AP_NORTHEAST_2;
 
-	public static void authenticate(String username, String password) {
+	public  void authenticate(String username, String password) {
 
 		// StaticCredentialsProvider provider =
 		// StaticCredentialsProvider.create(AwsBasicCredentials.create("",
@@ -35,8 +36,6 @@ public class CognitoService {
 
 	}
 
-	public static void main(String args[]) {
-		authenticate("USMAN", "USMAN123");
-	}
+	
 
 }
