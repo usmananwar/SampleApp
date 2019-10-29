@@ -1,4 +1,4 @@
-package com.usman.contollers;
+package com.usman;
 
 
 import org.springframework.boot.SpringApplication;

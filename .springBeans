@@ -7,7 +7,7 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
-		<config>java:com.usman.contollers.SampleApp</config>
+		<config>java:com.usman.SampleApp</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
