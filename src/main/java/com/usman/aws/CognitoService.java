@@ -13,9 +13,9 @@ public class CognitoService {
 
 	String USER_POOL_ID = "ap-northeast-2_a8emYYZzs";
 	String CLIENT_ID = "ap-northeast-2:3r8n6e2fsm686umcuhk1oi7jj5";
-	 Region REGION = Region.AP_NORTHEAST_2;
+	Region REGION = Region.AP_NORTHEAST_2;
 
-	public  void authenticate(String username, String password) {
+	public void authenticate(String username, String password) {
 
 		// StaticCredentialsProvider provider =
 		// StaticCredentialsProvider.create(AwsBasicCredentials.create("",
@@ -27,7 +27,7 @@ public class CognitoService {
 
 		CognitoIdentityAsyncClient client = CognitoIdentityAsyncClient.builder().region(REGION).build();
 
-		GetOpenIdTokenRequest request = GetOpenIdTokenRequest.builder().identityId(CLIENT_ID).logins(credentials)
+		GetOpenIdTokenRequest request = GetOpenIdTokenRequest.builder().identityId(USER_POOL_ID).logins(credentials)
 				.build();
 
 		GetOpenIdTokenResponse response = client.getOpenIdToken(request).join();
@@ -35,7 +35,5 @@ public class CognitoService {
 		System.out.println(response);
 
 	}
-
-	
 
 }
