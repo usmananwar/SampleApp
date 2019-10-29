@@ -27,8 +27,7 @@ public class CognitoService {
 
 		CognitoIdentityAsyncClient client = CognitoIdentityAsyncClient.builder().region(REGION).build();
 
-		GetOpenIdTokenRequest request = GetOpenIdTokenRequest.builder().identityId(USER_POOL_ID).logins(credentials)
-				.build();
+		GetOpenIdTokenRequest request = GetOpenIdTokenRequest.builder().logins(credentials).build();
 
 		GetOpenIdTokenResponse response = client.getOpenIdToken(request).join();
 
