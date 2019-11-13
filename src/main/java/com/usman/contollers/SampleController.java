@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 @RequestMapping("/MS1")
@@ -23,6 +24,9 @@ public class SampleController {
 		System.out.println("Login action is called!!!");
 
 		String cookieHeader = request.getHeader("SET-COOKIE");
+
+		ObjectMapper om = new ObjectMapper();
+		System.out.println(om.writeValueAsString(request.getHeaderNames()));
 
 		if (cookieHeader != null) {
 			System.out.println(cookieHeader);
