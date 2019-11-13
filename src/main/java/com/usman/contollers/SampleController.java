@@ -24,7 +24,7 @@ public class SampleController {
 	public void login() throws JsonProcessingException {
 		System.out.println("Login action is called!!!");
 
-		String cookieHeader = request.getHeader("SET-COOKIE");
+		String cookieHeader = request.getHeader("user_id");
 
 		ObjectMapper om = new ObjectMapper();
 		om.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
