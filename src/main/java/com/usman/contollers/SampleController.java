@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 @RestController
 @RequestMapping("/MS1")
@@ -26,6 +27,9 @@ public class SampleController {
 		String cookieHeader = request.getHeader("SET-COOKIE");
 
 		ObjectMapper om = new ObjectMapper();
+		om.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+		
+		
 		System.out.println(om.writeValueAsString(request.getHeaderNames()));
 
 		if (cookieHeader != null) {
