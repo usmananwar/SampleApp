@@ -5,10 +5,11 @@ import org.springframework.stereotype.Component;
 import redis.clients.jedis.Jedis;
 
 
+
 @Component
 public class ElastiCacheClient {
 
-	String url = "usman-test.adjlue.0001.apn2.cache.amazonaws.com";
+	String url = "usman-test.adjlue.0001.apn2.cache.amazonaws.com";				 
 	int port = 6379;
 	String password = "";
 
@@ -16,7 +17,7 @@ public class ElastiCacheClient {
 
 	public ElastiCacheClient() {
 		jedis = new Jedis(url, 6379);
-		//jedis.auth(password);
+		jedis.auth(password);
 	}
 
 	public String set(String key, String value) {
