@@ -17,7 +17,7 @@ public class ElastiCacheClient {
 
 	public ElastiCacheClient() {
 		jedis = new Jedis(url, 6379);
-		jedis.auth(password);
+		jedis.connect();
 	}
 
 	public String set(String key, String value) {
