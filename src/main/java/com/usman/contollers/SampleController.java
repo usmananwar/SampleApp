@@ -20,6 +20,9 @@ public class SampleController {
 	@Autowired
 	private HttpServletRequest request;
 
+	@Autowired
+	private HttpServletRequest response;
+
 	@RequestMapping(value = "/action1", method = RequestMethod.GET)
 	public void login() throws JsonProcessingException {
 		System.out.println("Login action is called!!!");
@@ -37,6 +40,8 @@ public class SampleController {
 		} else {
 			System.out.println("NOT FOUND");
 		}
+
+		System.out.println(om.writeValueAsString(response));
 
 	}
 
