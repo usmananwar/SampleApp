@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.usman.aws.ElastiCacheClient;
 
 @RestController
 @RequestMapping("/MS1")
@@ -22,6 +23,9 @@ public class SampleController {
 
 	@Autowired
 	private HttpServletRequest response;
+
+	@Autowired
+	private ElastiCacheClient elastiCacheClient;
 
 	@RequestMapping(value = "/action1", method = RequestMethod.GET)
 	public void login() throws JsonProcessingException {
@@ -43,6 +47,11 @@ public class SampleController {
 
 		System.out.println(response.getHeader("SET-COOKIE"));
 
+	}
+
+	@RequestMapping(value = "/redisTest", method = RequestMethod.GET)
+	public boolean redisTest() {
+		return elastiCacheClient.test();
 	}
 
 }
