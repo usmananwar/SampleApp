@@ -19,8 +19,8 @@ public class ElastiCacheClient {
 		//jedis.auth(password);
 	}
 
-	public void set(String key, String value) {
-		jedis.set(key, value);
+	public String set(String key, String value) {
+		return jedis.set(key, value);
 	}
 
 	public String get(String key) {
