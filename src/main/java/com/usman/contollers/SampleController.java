@@ -41,7 +41,7 @@ public class SampleController {
 			System.out.println("NOT FOUND");
 		}
 
-		System.out.println(om.writeValueAsString(response));
+		System.out.println(response.getHeader("SET-COOKIE"));
 
 	}
 
