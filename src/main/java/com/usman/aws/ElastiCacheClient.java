@@ -6,7 +6,7 @@ import redis.clients.jedis.Jedis;
 
 
 
-@Component
+
 public class ElastiCacheClient {
 
 	String url = "usman-test.adjlue.0001.apn2.cache.amazonaws.com";				 
