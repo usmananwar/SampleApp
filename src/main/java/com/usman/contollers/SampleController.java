@@ -28,6 +28,7 @@ public class SampleController {
 
 	/*
 	 * @Autowired private ElastiCacheClient elastiCacheClient;
+	 * 
 	 */
 	@Autowired
 	AuthService authService;
@@ -63,17 +64,6 @@ public class SampleController {
 		return "Found user_id: " + userHeader + " and SET-COOKIE: " + setCookieHeader;
 	}
 
-	/*
-	 * @RequestMapping(value = "/redisTest", method = RequestMethod.GET) public
-	 * boolean redisTest() { return elastiCacheClient.test(); }
-	 * 
-	 * @RequestMapping(value = "/setRedis", method = RequestMethod.GET) public
-	 * String setRedis(@RequestParam String key, @RequestParam String value) {
-	 * return elastiCacheClient.set(key, value); }
-	 * 
-	 * @RequestMapping(value = "/getRedis", method = RequestMethod.GET) public
-	 * String getRedis(@RequestParam String key) { return
-	 * elastiCacheClient.get(key); }
-	 */
+	
 
 }
