@@ -5,17 +5,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.usman.aws.ElastiCacheClient;
 
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -32,9 +26,9 @@ public class SampleController {
 	@Autowired
 	private HttpServletRequest response;
 
-	/*@Autowired
-	private ElastiCacheClient elastiCacheClient;
-*/
+	/*
+	 * @Autowired private ElastiCacheClient elastiCacheClient;
+	 */
 	@Autowired
 	AuthService authService;
 
@@ -43,7 +37,7 @@ public class SampleController {
 	public void signUp(
 			@ApiParam(value = "User's registration details", required = true) @RequestBody @Valid SignUpVO signUpVO) {
 
-		//log.debug("Performing signUp!");
+		// log.debug("Performing signUp!");
 		authService.signUp(signUpVO);
 	}
 
@@ -53,7 +47,7 @@ public class SampleController {
 			@ApiParam(value = "User's credentials to perform the login operation", required = true) @RequestBody @Valid SignInVO loginVO,
 			HttpServletResponse response) {
 
-		//log.debug("Performing signIn!");
+		// log.debug("Performing signIn!");
 		String jwt = authService.signIn(loginVO);
 
 		response.setHeader("SET-COOKIE", CookieUtil.prepareCookieHeader("jwt", jwt));
@@ -61,43 +55,25 @@ public class SampleController {
 		return jwt;
 	}
 
-	@RequestMapping(value = "/action1", method = RequestMethod.GET)
-	public String login() throws JsonProcessingException {
-		System.out.println("Login action is called!!!");
-
+	@GetMapping(value = "/authCheck")
+	@ApiOperation(value = "Verifies the user_id and SET-COOKIE header", notes = "Reads and returns the user_id and SET-COOKIE header values")
+	public String authCheck() {
 		String userHeader = request.getHeader("user_id");
-		/*String cookieHeader = request.getHeader("SET-COOKIE");
-
-		ObjectMapper om = new ObjectMapper();
-		om.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
-
-		System.out.println(om.writeValueAsString(request.getHeaderNames()));
-		if (cookieHeader != null) {
-			System.out.println(userHeader);
-			System.out.println(cookieHeader);
-		} else {
-			System.out.println("NOT FOUND");
-		}
-*/
-		System.out.println(response.getHeader("SET-COOKIE"));
-		
-		return userHeader;
-
-	}
-/*
-	@RequestMapping(value = "/redisTest", method = RequestMethod.GET)
-	public boolean redisTest() {
-		return elastiCacheClient.test();
+		String setCookieHeader = request.getHeader("SET-COOKIE");
+		return "Found user_id: " + userHeader + " and SET-COOKIE: " + setCookieHeader;
 	}
 
-	@RequestMapping(value = "/setRedis", method = RequestMethod.GET)
-	public String setRedis(@RequestParam String key, @RequestParam String value) {
-		return elastiCacheClient.set(key, value);
-	}
-
-	@RequestMapping(value = "/getRedis", method = RequestMethod.GET)
-	public String getRedis(@RequestParam String key) {
-		return elastiCacheClient.get(key);
-	}*/
+	/*
+	 * @RequestMapping(value = "/redisTest", method = RequestMethod.GET) public
+	 * boolean redisTest() { return elastiCacheClient.test(); }
+	 * 
+	 * @RequestMapping(value = "/setRedis", method = RequestMethod.GET) public
+	 * String setRedis(@RequestParam String key, @RequestParam String value) {
+	 * return elastiCacheClient.set(key, value); }
+	 * 
+	 * @RequestMapping(value = "/getRedis", method = RequestMethod.GET) public
+	 * String getRedis(@RequestParam String key) { return
+	 * elastiCacheClient.get(key); }
+	 */
 
 }
