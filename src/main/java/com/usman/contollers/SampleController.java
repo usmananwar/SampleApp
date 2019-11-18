@@ -61,6 +61,9 @@ public class SampleController {
 	public String authCheck() {
 		String userHeader = request.getHeader("user_id");
 		String setCookieHeader = request.getHeader("SET-COOKIE");
+		
+		System.out.println(setCookieHeader);
+		
 		return "Found user_id: " + userHeader + " and SET-COOKIE: " + setCookieHeader;
 	}
 
